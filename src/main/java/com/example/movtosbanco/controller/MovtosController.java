@@ -80,9 +80,7 @@ public class MovtosController {
         catch(Exception e) {
             throw new NotFoundExceptionToni("No encuentro id: " + id);
         }
-
-
-        //MovtosCtaBanco movto = this.usuarioServices.buscaPorId(id).orElseThrow(() -> new NotFoundExceptionToni("No encuentro id: " + id));
+        
         return movto;
      }
 

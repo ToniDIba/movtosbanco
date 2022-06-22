@@ -43,19 +43,4 @@ public class MiResponseEntityExceptionHandler extends ResponseEntityExceptionHan
 
 
 
-
-
-
-/* sergi
-    @ExceptionHandler(NoResultException.class)
-    public final ResponseEntity<CustomError> handleNotFoundException(NoResultException ex) {
-
-        CustomError exceptionResponse = new CustomError(new Date(), ex.getMessage(), 422);
-        return new ResponseEntity<CustomError>(exceptionResponse, HttpStatus.UNPROCESSABLE_ENTITY);
-
-    } */
-
-
-
-
 }
