@@ -1,6 +1,7 @@
 package com.example.movtosbanco.controller;
 
 import com.example.movtosbanco.ctasbcomdl.MovtosCtaBanco;
+import com.example.movtosbanco.exception.NotFoundExceptionToni;
 import com.example.movtosbanco.services.UsuarioServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.AntPathMatcher;
@@ -56,11 +57,44 @@ public class MovtosController {
     }
 
 
+
+    //------------ codigo original ----------------------------------------------------------------------------------
+    // http://localhost:8085/movtosbanco/buscaporid?id=12
+    //@GetMapping(value = "/buscaporid")
+    //public MovtosCtaBanco unIdSolamente(@RequestParam int id) {
+    //    return this.usuarioServices.buscaPorId(id);
+    // }
+    //------------------------------------------------------------------------------------------------------------------
+
+
     // http://localhost:8085/movtosbanco/buscaporid?id=12
     @GetMapping(value = "/buscaporid")
-    public MovtosCtaBanco unIdSolamente(@RequestParam int id) {
-        return this.usuarioServices.buscaPorId(id);
+    public MovtosCtaBanco unIdSolamente(@RequestParam int id) throws Exception
+    {
+
+        MovtosCtaBanco movto  = null;
+
+        try {
+            movto = this.usuarioServices.buscaPorId(id);
+        }
+        catch(Exception e) {
+            throw new NotFoundExceptionToni("No encuentro id: " + id);
+        }
+
+
+        //MovtosCtaBanco movto = this.usuarioServices.buscaPorId(id).orElseThrow(() -> new NotFoundExceptionToni("No encuentro id: " + id));
+        return movto;
      }
+
+
+
+
+
+
+
+
+
+
 
 
 
